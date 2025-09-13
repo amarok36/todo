@@ -30,4 +30,7 @@ private Priority priority;
 
 @FutureOrPresent(message = "Дата не может быть истекшей")
 private LocalDate deadline;
+
+private boolean completed;
+
 }
