@@ -1,1 +1,8 @@
-spring.application.name=todo
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/todo_db
+    username: postgres
+    password: 418413
