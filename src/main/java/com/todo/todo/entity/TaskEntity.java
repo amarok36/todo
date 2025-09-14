@@ -5,12 +5,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotBlank;
-import org.springframework.data.annotation.Id;
+import jakarta.persistence.Id;
+import jakarta.persistence.Entity;
 
 import lombok.Data;
 import java.time.LocalDate;
 
 @Data
+@Entity
 @Table(name = "tasks")
 public class TaskEntity {
 
