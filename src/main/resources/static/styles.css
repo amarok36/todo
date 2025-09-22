@@ -1,0 +1,25 @@
+html, body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    font-size: 50px;
+    color: slategray;
+}
+
+.container {
+    padding: 10px 0 0 30px;
+}
+
+.index-link {
+    margin-top: 30px;
+}
+
+.index-link a {
+    color: steelblue;
+    text-decoration: none;
+}
+
+.index-link a:hover {
+    text-decoration: underline;
+}
