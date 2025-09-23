@@ -3,20 +3,32 @@ html, body {
 }
 
 h1 {
-    font-size: 50px;
-    color: slategray;
+    margin-bottom: 20px;
+    font-size: 55px;
+    color: #596673;
 }
 
 .container {
     padding: 10px 0 0 30px;
 }
 
+.error-title {
+    font-size: 20px;
+    color: #515c68;
+}
+
+.error-message {
+    font-size: 12px;
+    font-weight: bold;
+    color: #515c68;
+}
+
 .index-link {
-    margin-top: 30px;
+    margin-top: 35px;
 }
 
 .index-link a {
-    color: steelblue;
+    color: #4682B4;
     text-decoration: none;
 }
 

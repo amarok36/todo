@@ -9,7 +9,8 @@
 <div class="container">
     <div class="section">
         <h1>Ой!</h1>
-        <p th:text="${errorMessage}">Сообщение об ошибке</p>
+        <p class="error-title" th:text="${errorTitle}">Произошла ошибка</p>
+        <p class="error-message" th:text="${errorMessage}">Описание ошибки</p>
     </div>
     <div class="index-link"><a th:href="@{/}" class="link">&laquo; на главную</a></div>
 </div>

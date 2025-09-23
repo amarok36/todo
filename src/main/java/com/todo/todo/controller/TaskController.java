@@ -2,7 +2,7 @@ package com.todo.todo.controller;
 
 import com.todo.todo.entity.Priority;
 import com.todo.todo.entity.TaskEntity;
-import com.todo.todo.repository.TaskRepository;
+import com.todo.todo.service.TaskService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,23 +15,22 @@ import java.util.List;
 @RequestMapping("/tasks")
 public class TaskController {
 
-    private final TaskRepository taskRepository;
+    private final TaskService taskService;
 
-    // просмотр задач с фильтрацией
     @GetMapping("/")
-    public String tasksList(@RequestParam(required = false) String category,
+    public String getTasks(@RequestParam(required = false) String category,
                             @RequestParam(required = false) String priority,
                             @RequestParam(required = false) Boolean completed,
                             Model model) {
         List<TaskEntity> tasks;
         if(category != null && !category.isEmpty()) {
-            tasks = taskRepository.findByCategory(category);
+            tasks = taskService.findByCategory(category);
         } else if (priority != null && !priority.isEmpty()) {
-            tasks = taskRepository.findByPriority(Priority.valueOf(priority));
+            tasks = taskService.findByPriority(Priority.valueOf(priority));
         } else if(completed != null) {
-            tasks = taskRepository.findByCompleted(completed);
+            tasks = taskService.findByCompleted(completed);
         } else {
-            tasks = taskRepository.findAll();
+            tasks = taskService.findAll();
         }
 
         model.addAttribute("tasks", tasks);
@@ -46,33 +45,25 @@ public class TaskController {
 
     @PostMapping("/save")
     public String saveTask(@ModelAttribute TaskEntity task) {
-        taskRepository.save(task);
+        taskService.save(task);
         return "redirect:/";
     }
 
    @GetMapping("/delete/{id}")
     public String deleteTask(@PathVariable Long id) {
-        TaskEntity task = taskRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Неверный id задачи: " + id));
-        taskRepository.delete(task);
+        taskService.deleteById(id);
         return "redirect:/";
     }
 
     @GetMapping("/complete/{id}")
     public String completeTask(@PathVariable Long id) {
-        TaskEntity task = taskRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Неверный id задачи: " + id));
-        task.setCompleted(true);
-        taskRepository.save(task);
+        taskService.markAsCompleted(id);
         return "redirect:/";
     }
 
     @GetMapping("/incomplete/{id}")
     public String incompleteTask(@PathVariable Long id) {
-        TaskEntity task = taskRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Неверный id задачи: " + id));
-        task.setCompleted(false);
-        taskRepository.save(task);
+       taskService.markAsIncomplete(id);
         return "redirect:/";
     }
 }
