@@ -9,7 +9,8 @@ public class GlobalException {
 
     @ExceptionHandler(Exception.class)
     public String handleGeneralException(Exception ex, Model model) {
-        model.addAttribute("errorMessage", "Произошла ошибка: " + ex.getMessage());
+        model.addAttribute("errorTitle", "Произошла ошибка");
+        model.addAttribute("errorMessage", ex.getMessage());
         return "error";
     }
 }
