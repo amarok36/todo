@@ -40,7 +40,7 @@ public class TaskController {
     @GetMapping("/add")
     public String showAddForm(Model model) {
         model.addAttribute("task", new TaskEntity());
-        return "task-form";
+        return "new-task";
     }
 
     @PostMapping("/save")

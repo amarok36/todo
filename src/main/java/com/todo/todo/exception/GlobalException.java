@@ -3,6 +3,7 @@ package com.todo.todo.exception;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.thymeleaf.exceptions.TemplateInputException;
 
 @ControllerAdvice
 public class GlobalException {
@@ -14,3 +15,4 @@ public class GlobalException {
         return "error";
     }
 }
+

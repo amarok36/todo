@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Создать новую задачу</title>
+    <link rel="shortcut icon" type="image/png" th:href="@{/img/favicon.png}">
+    <link rel="stylesheet" type="text/css" th:href="@{/styles.css}">
+</head>
+<body>
+<div class="task-container">
+    <h1>Создать новую задачу</h1>
+    <div class="new-task">
+        <form th:action="@{/tasks/save}" th:object="${task}" method="post">
+            <div class="form-block">
+                <label for="title-input">* Название</label>
+                <input type="text" id="title-input" th:field="*{title}">
+            </div>
+
+            <div class="form-block">
+                <label for="description-field">Описание</label>
+                <textarea id="description-field" th:field="*{description}"></textarea>
+            </div>
+
+            <div class="form-block">
+                <label for="category-input">* Категория</label>
+                <input type="text" id="category-input" th:field="*{category}">
+            </div>
+
+            <div class="form-block">
+                <label for="priority-select">Приоритет</label>
+                <select id="priority-select" th:field="*{priority}">
+                    <option value="">Выберите приоритет</option>
+                    <option th:each="priority : ${T(com.todo.todo.entity.Priority).values()}"
+                            th:value="${priority}"
+                            th:text="${priority.russianLabel}">
+                    </option>
+                </select>
+            </div>
+
+            <div class="form-block">
+                <label for="deadline-input">Срок выполнения</label>
+                <input type="date" id="deadline-input" th:field="*{deadline}">
+            </div>
+
+            <div class="form-block">
+                <button type="submit" class="btn">Сохранить</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
