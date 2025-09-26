@@ -3,16 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Ошибка</title>
+    <link rel="shortcut icon" type="image/png" th:href="@{/img/favicon.png}">
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-<div class="container">
-    <div class="section">
-        <h1>Ой!</h1>
-        <p class="error-title" th:text="${errorTitle}">Произошла ошибка</p>
-        <p class="error-message" th:text="${errorMessage}">Описание ошибки</p>
-    </div>
-    <div class="index-link"><a th:href="@{/}" class="link">&laquo; на главную</a></div>
+<div class="error-container">
+    <div id="error-heading">Ой!</div>
+    <p id="error-title" th:text="${errorTitle}">Произошла ошибка</p>
+    <p id="error-message" th:text="${errorMessage}">Описание ошибки</p>
+    <div id="index-link"><a th:href="@{/}" class="link">&laquo; на главную</a></div>
 </div>
 </body>
 </html>
