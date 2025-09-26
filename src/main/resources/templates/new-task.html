@@ -27,7 +27,7 @@
             </div>
 
             <div class="form-block">
-                <label for="priority-select">Приоритет</label>
+                <label for="priority-select">* Приоритет</label>
                 <select id="priority-select" th:field="*{priority}">
                     <option value="">Выберите приоритет</option>
                     <option th:each="priority : ${T(com.todo.todo.entity.Priority).values()}"
