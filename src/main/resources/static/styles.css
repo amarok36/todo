@@ -11,34 +11,117 @@ h1 {
     color: #596673;
 }
 
-.task-container {
-    margin: 0 auto;
-    padding: 20px 30px;
-    width: 100%;
-    max-width: 500px;
-    box-sizing: border-box;
-}
-
-.error-container {
-    padding: 30px 0 0 30px;
-}
-
-#error-heading {
-    margin-bottom: 20px;
-    font-size: 55px;
-    font-weight: bold;
+h3 {
     color: #596673;
 }
 
-#error-title {
-    font-size: 20px;
-    color: #515c68;
+.new-task {
+    position: relative;
+    margin-bottom: 20px;
+    padding: 0 30px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-#error-message {
-    font-size: 12px;
+.task-container {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px 30px;
+    box-sizing: border-box;
+}
+
+.list-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px 30px;
+    box-sizing: border-box;
+}
+
+.list-container-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task-list {
+    margin-top: 10px;
+}
+
+.task-list-empty {
+    padding: 40px;
+    text-align: center;
+}
+
+.task-item {
+    margin-bottom: 25px;
+    padding: 15px 30px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.task-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task-title span {
     font-weight: bold;
-    color: #515c68;
+    color: #8993ad;
+}
+
+.task-description {
+    margin-bottom: 10px;
+    color: #666;
+}
+
+.task-description p {
+    margin: 0;
+}
+
+.task-details {
+    margin-bottom: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    font-size: 14px;
+    color: #8993ad;
+}
+
+.task-btn {
+    margin: 15px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task-btn-complete {
+    padding: 8px 15px;
+    background-color: #2174fd;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    color: white;
+}
+
+.task-btn-delete {
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+}
+
+.save-btn {
+    max-width: 420px;
+    margin: 10px 0 20px 0;
+    padding: 20px 55px;
+    font-size: 16px;
+    background-color: #2174fd;
+    border: none;
+    color: white;
+    cursor: pointer;
 }
 
 form {
@@ -86,24 +169,28 @@ label {
     resize: none;
 }
 
-.btn {
-    margin: 10px 0 20px 0;
-    padding: 20px 55px;
-    background-color: #2174fd;
-    border: none;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    max-width: 420px;
+.error-container {
+    padding: 30px 0 0 30px;
 }
 
-.new-task {
+#error-heading {
     margin-bottom: 20px;
-    position: relative;
-    background-color: #ffffff;
-    padding: 0 30px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    font-size: 55px;
+    font-weight: bold;
+    color: #596673;
 }
+
+#error-title {
+    font-size: 20px;
+    color: #515c68;
+}
+
+#error-message {
+    font-size: 12px;
+    font-weight: bold;
+    color: #515c68;
+}
+
 
 #index-link {
     margin-top: 35px;
@@ -118,7 +205,21 @@ label {
     text-decoration: underline;
 }
 
+#add-link {
+    margin-right: 30px;
+    color: #666;
+    text-decoration: none;
+}
+
+#add-link:hover {
+    text-decoration: underline;
+}
+
 @media (max-width: 768px) {
+    h1 {
+        text-align: center;
+    }
+
     .task-container {
         padding: 20px 15px;
         max-width: 100%;
@@ -126,10 +227,6 @@ label {
 
     .new-task {
         padding: 25px 20px 0;
-    }
-
-    h1 {
-        text-align: center;
     }
 
     form {
@@ -147,37 +244,14 @@ label {
     #description-field,
     #priority-select,
     #deadline-input {
-        font-size: 16px;
         padding: 0.5rem 0.75rem;
+        font-size: 16px;
     }
 
     label {
-        font-size: 16px;
         margin-bottom: 8px;
+        font-size: 16px;
     }
 }
 
-@media (max-width: 480px) {
-    .task-container {
-        padding: 15px 10px;
-    }
 
-    .new-task {
-        padding: 20px 15px 0;
-    }
-
-    h1 {
-        font-size: 20px;
-        margin-bottom: 15px;
-    }
-
-    #title-input,
-    #category-input,
-    #description-field,
-    #priority-select,
-    #deadline-input {
-        height: 2.75rem;
-        padding: 0.6rem 0.75rem;
-    }
-
-}

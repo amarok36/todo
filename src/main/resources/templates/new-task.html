@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Создать новую задачу</title>
@@ -10,7 +10,7 @@
 <div class="task-container">
     <h1>Создать новую задачу</h1>
     <div class="new-task">
-        <form th:action="@{/tasks/save}" th:object="${task}" method="post">
+        <form th:action="@{/save}" th:object="${task}" method="post">
             <div class="form-block">
                 <label for="title-input">* Название</label>
                 <input type="text" id="title-input" th:field="*{title}">
@@ -43,7 +43,7 @@
             </div>
 
             <div class="form-block">
-                <button type="submit" class="btn">Сохранить</button>
+                <button type="submit" class="save-btn">Сохранить</button>
             </div>
         </form>
     </div>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Список задач</title>
+    <link rel="shortcut icon" type="image/png" th:href="@{/img/favicon.png}">
+    <link rel="stylesheet" type="text/css" th:href="@{/styles.css}">
+</head>
+<body>
+<div class="list-container">
+    <div class="list-container-header">
+        <h1>Список задач</h1>
+        <a id="add-link" th:href="@{/add}">Создать</a>
+    </div>
+    <div class="task-list">
+        <div th:each="task : ${tasks}" class="task-item">
+            <div class="task-title">
+                <h3 th:text="${task.title}"
+                    th:style="${task.completed}">
+                </h3>
+                <span th:if="${task.completed}">Выполнено</span>
+                <span th:unless="${task.completed}">В процессе</span>
+            </div>
+
+            <div class=task-description th:if="${task.description}">
+                <p th:text="${task.description}"></p>
+            </div>
+
+            <div class="task-details">
+                <div>
+                    <strong>Категория:</strong>
+                    <span th:text="${task.category}"></span>
+                </div>
+                <div>
+                    <strong>Приоритет:</strong>
+                    <span th:text="${task.priority.russianLabel}">
+                    </span>
+                </div>
+
+                <div class="task-deadline" th:if="${task.deadline}">
+                    <strong>Срок:</strong>
+                    <span th:text="${#temporals.format(task.deadline, 'dd.MM.yyyy')}"></span>
+                </div>
+            </div>
+
+            <div class="task-btn">
+                <a class="task-btn-complete" th:href="@{/complete/{id}(id=${task.id})}"
+                   th:unless="${task.completed}">Выполнить</a>
+                <a th:href="@{/incomplete/{id}(id=${task.id})}"
+                   th:if="${task.completed}"
+                   style="padding: 8px 15px; background-color: #28a745; color: #ffffff; text-decoration: none;">
+                    Вернуть в работу
+                </a>
+
+                <a class="task-btn-delete" th:href="@{/delete/{id}(id=${task.id})}"
+                   onclick="return confirm('Удалить задачу?')"><img src="img/trash_can.png" alt="Удалить"></a>
+            </div>
+        </div>
+
+        <div class='task-list-empty' th:if="${#lists.isEmpty(tasks)}">
+            <h3>Задач пока нет</h3>
+        </div>
+    </div>
+</div>
+</body>
+</html>
