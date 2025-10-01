@@ -12,16 +12,16 @@ import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/tasks")
+@RequestMapping("/")
 public class TaskController {
 
     private final TaskService taskService;
 
-    @GetMapping("/")
+    @GetMapping("/tasks")
     public String getTasks(@RequestParam(required = false) String category,
-                            @RequestParam(required = false) String priority,
-                            @RequestParam(required = false) Boolean completed,
-                            Model model) {
+                           @RequestParam(required = false) String priority,
+                           @RequestParam(required = false) Boolean completed,
+                           Model model) {
         List<TaskEntity> tasks;
         if(category != null && !category.isEmpty()) {
             tasks = taskService.findByCategory(category);
@@ -46,24 +46,24 @@ public class TaskController {
     @PostMapping("/save")
     public String saveTask(@ModelAttribute TaskEntity task) {
         taskService.save(task);
-        return "redirect:/";
+        return "redirect:/tasks";
     }
 
-   @GetMapping("/delete/{id}")
+    @GetMapping("/delete/{id}")
     public String deleteTask(@PathVariable Long id) {
         taskService.deleteById(id);
-        return "redirect:/";
+        return "redirect:/tasks";
     }
 
     @GetMapping("/complete/{id}")
     public String completeTask(@PathVariable Long id) {
         taskService.markAsCompleted(id);
-        return "redirect:/";
+        return "redirect:/tasks";
     }
 
     @GetMapping("/incomplete/{id}")
     public String incompleteTask(@PathVariable Long id) {
-       taskService.markAsIncomplete(id);
-        return "redirect:/";
+        taskService.markAsIncomplete(id);
+        return "redirect:/tasks";
     }
 }
