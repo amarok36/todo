@@ -48,7 +48,6 @@ public class TaskController {
     @PostMapping("/save")
     public String saveTask(@Valid @ModelAttribute TaskEntity task, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            // Если есть ошибки валидации, будет перехвачено GlobalException
             throw new RuntimeException(getValidationErrorMessage(bindingResult));
         }
         taskService.save(task);
