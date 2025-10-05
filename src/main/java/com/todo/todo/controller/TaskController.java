@@ -3,9 +3,11 @@ package com.todo.todo.controller;
 import com.todo.todo.entity.Priority;
 import com.todo.todo.entity.TaskEntity;
 import com.todo.todo.service.TaskService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -44,9 +46,20 @@ public class TaskController {
     }
 
     @PostMapping("/save")
-    public String saveTask(@ModelAttribute TaskEntity task) {
+    public String saveTask(@Valid @ModelAttribute TaskEntity task, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            // Если есть ошибки валидации, будет перехвачено GlobalException
+            throw new RuntimeException(getValidationErrorMessage(bindingResult));
+        }
         taskService.save(task);
         return "redirect:/tasks";
+    }
+
+    private String getValidationErrorMessage(BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return bindingResult.getFieldError().getDefaultMessage();
+        }
+        return "Неизвестная ошибка валидации";
     }
 
     @GetMapping("/delete/{id}")
