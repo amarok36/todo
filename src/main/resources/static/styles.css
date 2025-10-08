@@ -15,12 +15,25 @@ h3 {
     color: #596673;
 }
 
-.new-task {
+p {
+    display: grid;
+    place-items: center;
+    width: 500px;
+}
+
+.index-container {
     position: relative;
-    margin-bottom: 20px;
-    padding: 0 30px;
-    background-color: #ffffff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px 30px;
+    box-sizing: border-box;
+}
+
+.index-container-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .task-container {
@@ -53,6 +66,14 @@ h3 {
 .task-list-empty {
     padding: 40px;
     text-align: center;
+}
+
+.new-task {
+    position: relative;
+    margin-bottom: 20px;
+    padding: 0 30px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .task-item {
