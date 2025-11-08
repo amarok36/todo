@@ -1,15 +1,12 @@
 package com.todo.todo.entity;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import jakarta.persistence.Id;
-import jakarta.persistence.Entity;
 
 import lombok.Data;
+
 import java.time.LocalDate;
 
 @Data
@@ -17,23 +14,27 @@ import java.time.LocalDate;
 @Table(name = "tasks")
 public class TaskEntity {
 
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-@NotBlank(message = "Название обязательно")
-private String title;
+    @NotBlank(message = "Название обязательно")
+    private String title;
 
-private String description;
+    private String description;
 
-@NotBlank(message = "Категория обязательна")
-private String category;
+    @NotBlank(message = "Категория обязательна")
+    private String category;
 
-@NotNull(message = "Приоритет обязателен")
-private Priority priority;
+    @NotNull(message = "Приоритет обязателен")
+    private Priority priority;
 
-@FutureOrPresent(message = "Дата не может быть истекшей")
-private LocalDate deadline;
+    @FutureOrPresent(message = "Дата не может быть истекшей")
+    private LocalDate deadline;
 
-private boolean completed;
+    private boolean completed;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private UserEntity user;
 }

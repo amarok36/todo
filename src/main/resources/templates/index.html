@@ -2,17 +2,20 @@
 <html lang="ru">
 <head>
     <html lang="ru" xmlns:th="http://www.thymeleaf.org">
-    <title>Вход</title>
+    <title>Система управления задачами</title>
     <link rel="shortcut icon" type="image/png" th:href="@{/img/favicon.png}">
     <link rel="stylesheet" type="text/css" th:href="@{/styles.css}">
 </head>
 <body>
 <div class="index-container">
     <div class="index-container-header">
-        <h1>Здесь будет окно авторизации</h1>
-        <p>а пока перейдите на страницу со <a id="add-link" th:href="@{/tasks}">списком задач</a></p>
+        <h1>Система управления задачами</h1>
+    </div>
+    <div class="index-auth-links">
+        <a th:href="@{/login}" class="auth-btn">Вход</a>
+        <p>Нет аккаунта? Тогда вам необходимо
+            <a id=index-auth-links-register th:href="@{/register}">зарегистрироваться</a></p>
     </div>
 </div>
-
 </body>
 </html>

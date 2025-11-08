@@ -8,9 +8,12 @@
 </head>
 <body>
 <div class="task-container">
-    <h1>Создать новую задачу</h1>
+    <div class="new-task-container-header">
+        <h1>Создать новую задачу</h1>
+    </div>
     <div class="new-task">
         <form th:action="@{/save}" th:object="${task}" method="post">
+
             <div class="form-block">
                 <label for="title-input">* Название</label>
                 <input type="text" id="title-input" th:field="*{title}">

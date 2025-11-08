@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<html lang="ru" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Список задач</title>
@@ -10,7 +10,11 @@
 <div class="list-container">
     <div class="list-container-header">
         <h1>Список задач</h1>
-        <a id="add-link" th:href="@{/add}">Создать</a>
+        <form th:action="@{/logout}" method="post" class="logout-form">
+            <button type="submit" class="logout-btn" title="Выйти">
+                [ <span sec:authentication="name"></span> ]
+            </button>
+        </form>
     </div>
     <div class="task-list">
         <div th:each="task : ${tasks}" class="task-item">
@@ -60,6 +64,8 @@
         <div class='task-list-empty' th:if="${#lists.isEmpty(tasks)}">
             <h3>Задач пока нет</h3>
         </div>
+
+        <a id="add-link" th:href="@{/add}">Создать</a>
     </div>
 </div>
 </body>

@@ -9,8 +9,10 @@
 <body>
 <div class="error-container">
     <div id="error-heading">Ой!</div>
+
     <p id="error-title" th:text="${errorTitle}">Произошла ошибка</p>
     <p id="error-message" th:text="${errorMessage}">Описание ошибки</p>
+
     <div id="index-link"><a th:href="@{/}" class="link">&laquo; на главную</a></div>
 </div>
 </body>
